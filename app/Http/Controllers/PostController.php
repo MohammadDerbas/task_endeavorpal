@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\PostRepository;
 use Illuminate\Http\Response;
 use App\Models\Post;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use function PHPUnit\Framework\throwException;
 
 class PostController extends Controller
@@ -79,6 +80,9 @@ class PostController extends Controller
     {
         $post=$this->postService->getById($postId);
 
+        if(!$post){
+            throw new NotFoundHttpException;
+        }
 
       $response =
           [

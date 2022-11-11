@@ -39,20 +39,11 @@ class CommentController extends Controller
     public function index($postId)
     {
         $commentsWithPaginate= $this->commentsService->getAllWithPagination($postId);
-
-
-
         $response =
             [
             'comments' => $commentsWithPaginate
             ];
         return response($response,200);
-
-
-
-
-
-
     }
 
 
